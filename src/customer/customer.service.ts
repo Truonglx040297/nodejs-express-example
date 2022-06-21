@@ -17,4 +17,44 @@ export class CustomerService {
       res.send(err);
     }
   }
+
+  async updateCustomer(
+    data: CreateCustomer,
+    id: number,
+    res: Response<any, Record<string, any>, number>
+  ) {
+    try {
+      const a = await this.customerRepo.update("customer", data, id);
+      res.send(a);
+    } catch (err) {
+      res.send(err);
+    }
+  }
+
+  async getAll(res: Response<any, Record<string, any>, number>) {
+    try {
+      const a = await this.customerRepo.findAll("customer");
+      res.send(a);
+    } catch (err) {
+      res.send(err);
+    }
+  }
+
+  async getOne(id: number, res: Response<any, Record<string, any>, number>) {
+    try {
+      const a = await this.customerRepo.findOne("customer", id);
+      res.send(a);
+    } catch (err) {
+      res.send(err);
+    }
+  }
+
+  async delete(id: number, res: Response<any, Record<string, any>, number>) {
+    try {
+      const a = await this.customerRepo.delete("customer", id);
+      res.send(a);
+    } catch (err) {
+      res.send(err);
+    }
+  }
 }
